@@ -1,0 +1,25 @@
+trigger TriggerOpportunity on Opportunity (after update) {
+    
+    List<Opportunity> atualizaDescricao = new List<Opportunity>();
+    List<Opportunity> atualizaNextStep = new List<Opportunity>();
+
+    
+    if(Trigger.isAfter && Trigger.isUpdate){
+        for(Opportunity o:trigger.new){
+            
+            if(o.StageName == 'Closed Won'){
+                atualizaDescricao.add(o);
+                System.debug('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' + o);
+            }
+            
+            if(o.Type == 'New Customer'){
+                atualizaNextStep.add(o);
+
+            }
+		            
+        }      
+  
+    }
+    OpportunityTriggerHandler.insereDadosDescription(atualizaDescricao);
+    OpportunityTriggerHandler.atualizaNextStep(atualizaNextStep);
+}
