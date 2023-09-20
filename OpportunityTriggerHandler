@@ -1,0 +1,11 @@
+public class OpportunityTriggerHandler {
+    
+    public static void insereDadosDescription(List<Opportunity> oportunidades){
+        System.debug('?????????? insereDadosDescription' + oportunidades);
+        
+    }
+     public static void atualizaNextStep(List<Opportunity> oportunidades){
+         System.debug('############### atualizaNextStep' + oportunidades);
+
+    }
+}
